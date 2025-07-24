@@ -63,11 +63,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        .\venv\Scripts\activate
+        venv\Scripts\activate
         py -m pip install --upgrade pip
         py -m pip install -r requirements.txt
 
     - name: Run tests
       run: |
-        .\venv\Scripts\activate
+        venv\Scripts\activate
         python -m unittest discover -s tests -p "test_*.py"
