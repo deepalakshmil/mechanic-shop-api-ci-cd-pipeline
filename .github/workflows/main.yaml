@@ -69,5 +69,4 @@ jobs:
 
     - name: Run tests
       run: |
-        venv\Scripts\activate
         python -m unittest discover -s tests -p "test_*.py"
