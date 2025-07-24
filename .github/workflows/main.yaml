@@ -9,7 +9,7 @@ on:
 jobs:
   # The things we want to happen on push
   build:
-    runs-on: windows-latest # The job will run on a machine with Ubuntu as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
+    runs-on: windows-latest # The job will run on a machine with windows as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
 
     steps:
     - name: Checkout code
@@ -34,8 +34,8 @@ jobs:
       run: |
         echo "Python Version: $(python --version)"
         echo "Working Directory: $(pwd)"
-        echo "Contents of Working Directory: $(ls -l)"
-        echo "Contents of site-packages: $(ls -l .venv\Lib\site-packages)"
+        echo "Contents of Working Directory: Get-ChildItem
+        echo "Contents of site-packages:" Get-ChildItem -Path .venv\Lib\site-packages
 
   # create our first pipeline to test project
 
