@@ -1,0 +1,66 @@
+# create our first pipeline to build the project
+
+name: Mechanic-Shop-API
+
+on:
+  push:
+    branches: [ main, master ] # Setting on Push to main branch, run our job
+
+jobs:
+  # The things we want to happen on push
+  build:
+    runs-on: ubuntu-latest # The job will run on a machine with Ubuntu as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12 # setting up python on our build environment adding comment
+
+    - name: Create virtual environment
+      run: |
+        py -m venv venv
+        venv\Scripts\activate
+
+    - name: Install dependencies
+      run: |
+        py -m pip install --upgrade pip
+        py -m pip install -r requirements.txt
+
+    - name: Print debugging information
+      run: |
+        echo "Python Version: $(python --version)"
+        echo "Working Directory: $(pwd)"
+        echo "Contents of Working Directory: $(ls -l)"
+        echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+
+  # create our first pipeline to test project
+
+  test:
+    needs: build # this test job will not run until the build job successfully executed.
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
+
+    - name: Create virtual environment
+      run: |
+        py -m venv venv
+        venv\Scripts\activate
+
+    - name: Install dependencies
+      run: |
+        py -m pip install --upgrade pip
+        py -m pip install -r requirements.txt
+
+    - name: Run tests
+      run: python -m unittest discover -s tests -p 'test_*.py'
