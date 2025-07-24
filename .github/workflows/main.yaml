@@ -33,9 +33,9 @@ jobs:
     - name: Print debugging information
       run: |
         echo "Python Version: $(python --version)"
-        echo "Working Directory: $(Get-Location)"
-        echo "Contents of Working Directory:" Get-ChildItem
-        echo "Contents of site-packages:" Get-ChildItem -Path .\venv\Lib\site-packages
+        echo "Working Directory: $(pwd)"
+        echo "Contents of Working Directory: $(ls -l.)"
+        echo "Contents of site-packages: $(ls -l. venv\Lib\site-packages)"
 
   # create our first pipeline to test project
 
