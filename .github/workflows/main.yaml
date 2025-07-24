@@ -33,13 +33,13 @@ jobs:
     - name: Print debugging information
       run: |
         echo "Python Version:"
-        python --version
+        python --version          # Prints Python version
         echo "Working Directory:" 
-        Get-Location            
-        echo "Contents of Working Directory:"
-        Get-ChildItem
+        Get-Location             # Prints working directory (PowerShell's pwd)
+        echo "Contents of Working Directory:" 
+        Get-ChildItem             # Lists files/folders in current dir
         echo "Contents of site-packages:"
-        Get-ChildItem -Path venv\Lib\site-packages
+        Get-ChildItem -Path venv\Lib\site-packages   # Lists installed packages in ven
 
   # create our first pipeline to test project
 
@@ -59,7 +59,7 @@ jobs:
     - name: Create virtual environment
       run: |
         py -m venv venv
-        venv\Scripts\activate
+        .\venv\Scripts\activate
 
     - name: Install dependencies
       run: |
