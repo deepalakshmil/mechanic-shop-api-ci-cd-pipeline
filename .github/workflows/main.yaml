@@ -9,7 +9,7 @@ on:
 jobs:
   # The things we want to happen on push
   build:
-    runs-on: ubuntu-latest # The job will run on a machine with Ubuntu as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
+    runs-on: windows-latest # The job will run on a machine with Ubuntu as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
 
     steps:
     - name: Checkout code
@@ -41,7 +41,7 @@ jobs:
 
   test:
     needs: build # this test job will not run until the build job successfully executed.
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
