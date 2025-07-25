@@ -1,72 +1,53 @@
-# create our first pipeline to build the project
-
-name: Mechanic-Shop-API
-
-on:
+name: Mechanic Shop API CI
+'on':
   push:
-    branches: [ main, master ] # Setting on Push to main branch, run our job
-
+    branches:
+    - main
+    - master
 jobs:
-  # The things we want to happen on push
   build:
-    runs-on: windows-latest # The job will run on a machine with windows as the operating system. Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github actions
-
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.12 # setting up python on our build environment adding comment
-
-    - name: Create virtual environment
-      run: |
-        py -m venv venv
-        venv\Scripts\activate
-
-    - name: Install dependencies
-      run: |
-        py -m pip install --upgrade pip
-        py -m pip install -r requirements.txt
-
-    - name: Print debugging information
-      run: |
-        echo "Python Version:"
-        python --version          # Prints Python version
-        echo "Working Directory:" 
-        Get-Location             # Prints working directory (PowerShell's pwd)
-        echo "Contents of Working Directory:" 
-        Get-ChildItem             # Lists files/folders in current dir
-        echo "Contents of site-packages:"
-        Get-ChildItem -Path venv\Lib\site-packages   # Lists installed packages in ven
-
-  # create our first pipeline to test project
-
-  test:
-    needs: build # this test job will not run until the build job successfully executed.
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.12
-
     - name: Create virtual environment
       run: |
-        py -m venv venv
-        .\venv\Scripts\activate
-
+        python -m venv venv
+        source venv/bin/activate
     - name: Install dependencies
       run: |
-        venv\Scripts\activate
-        py -m pip install --upgrade pip
-        py -m pip install -r requirements.txt
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+    - name: Print debugging information
+      run: >
+        echo "Python Version: $(python --version)"
 
-    - name: Run tests
+        echo "Working Directory: $(pwd)"
+
+        echo "Contents of Working Directory: $(ls -l)"
+
+        echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
+    - name: Create virtual environment
       run: |
-        python -m unittest discover -s tests -p "test_*.py"
+        python -m venv venv
+        source venv/bin/activate
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+    - name: Run tests
+      run: python -m unittest discover -s tests -p 'test_*.py'
