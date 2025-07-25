@@ -5,8 +5,10 @@ from functools import wraps
 from flask import request,jsonify
 from application.models import Customer
 from application.models import db
+import os
 
-SECRET_KEY = "my super secret, secret key"
+SECRET_KEY =  os.environ.get('SECRET_KEY') or "my super secret, secret key"
+
 
 def encode_token(customer_id): #using unique pieces of info to make our tokens user specific
     payload = {
