@@ -1,12 +1,17 @@
-name: Mechanic Shop API CI
+# create our first pipeline to build the project
+
+name: Mechanic Shop API CI/CD
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master ] # Setting on Push to main branch, run our job
 
 jobs:
+  # The things we want to happen on pus
   build:
     runs-on: ubuntu-latest
+      # This specifies the type of machine that will run the job. The job will run on a machine with Ubuntu as the operating system.
+      # Ubuntu is a widely used linux distribution that is heavily support and has alot of prebuilt Github action
 
     steps:
     - name: Checkout code
@@ -15,7 +20,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.13
+        python-version: 3.13 # setting up python on our build environment adding comment
 
     - name: Create virtual environment
       run: |
@@ -36,6 +41,8 @@ jobs:
         echo "Contents of Working Directory: $(ls -l)"
 
         echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+
+  #create our first pipeline to test project
 
   test:
     needs: build
