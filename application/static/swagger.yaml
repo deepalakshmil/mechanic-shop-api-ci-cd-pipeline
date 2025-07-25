@@ -3,9 +3,9 @@ info:
   title: "Mechanic Shop API"
   description: "This API is designed for a Mechanic Shop Management System"
   version: "1.0.0"
-host: "127.0.0.1:5000" # working on local host
+host: "mechanic-shop-api-ci-cd-pipeline.onrender.com"
 schemes:
-- "http"
+- "https"
 consumes:
 - "application/json"
 produces:
