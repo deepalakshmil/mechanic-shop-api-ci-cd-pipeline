@@ -28,6 +28,10 @@
 │   └── test_inventories.py
 │
 │
+├── .github/workflows/
+│        └── main.yaml           #  GitHub Actions CI/CD Workflow
+│
+│
 ├── app.py                       # Entry point to start the Flask app
 ├── config.py                    # Configuration for dev/test/prod environments
 └── requirements.txt             # All dependencies

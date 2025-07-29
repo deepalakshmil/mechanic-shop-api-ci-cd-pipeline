@@ -96,7 +96,9 @@ jobs:
         python -m pip install -r requirements.txt
 
     - name: Deploy to production
-      uses: johnbeynon/render-deploy-action@v0.0.8
+      uses: johnbeynon/render-deploy-action@v0.0.8 ## The GitHub Action johnbeynon/render-deploy-action@v0.0.8 is used to trigger a deployment on Render from your GitHub Actions workflow.
       with:
         service-id: ${{secrets.SERVICE_ID}}
+          ## This action sends a deployment request to a Render service (like a web service or background worker) using a Render deploy hook URL.
+          ## The Render deploy hook URL, which you get from your Render dashboard under your service's "Deploy Hooks" settings.
         api-key: ${{secrets.RENDER_API_KEY}}
