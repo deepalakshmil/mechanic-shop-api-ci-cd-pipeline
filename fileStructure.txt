@@ -1,4 +1,6 @@
 
+
+
 ### Project Structure 
 ##File Layout  of an Mechani Shop Advanced API in the Application Factory Pattern ###
 
@@ -35,3 +37,4 @@
 ├── app.py                       # Entry point to start the Flask app
 ├── config.py                    # Configuration for dev/test/prod environments
 └── requirements.txt             # All dependencies
+
