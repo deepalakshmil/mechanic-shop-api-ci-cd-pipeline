@@ -12,7 +12,9 @@ class TestingConfig:
     CACHE_TYPE = 'SimpleCache'
 
 class ProductionConfig:
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI','mysql+mysqlconnector://root:welcomesql1@localhost/mechanic_shop_db')
+    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:welcomesql1@localhost/mechanic_shop_db'
     CACHE_TYPE = 'SimpleCache'
     
     

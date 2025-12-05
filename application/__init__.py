@@ -6,10 +6,11 @@ from application.blueprints.mechanics import mechanics_bp
 from application.blueprints.service_tickets import serviceTickets_bp
 from application.blueprints.inventories import inventories_bp
 from flask_swagger_ui import get_swaggerui_blueprint
+# from flask_cors import CORS 
 
 SWAGGER_URI = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
 API_URL = '/static/swagger.yaml'   # Our API URL (can of course be a local resource)
-
+# API_URL = 'https://api-factory-pattern.onrender.com/static/swagger.yaml'
 swaggerui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URI,
     API_URL,
@@ -20,6 +21,7 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 
 def create_app(config_name):
     app = Flask(__name__)
+    # CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
     app.config.from_object(f'config.{config_name}')
 
 
