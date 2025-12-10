@@ -27,9 +27,7 @@ class ProductionConfig:
     CACHE_TYPE = 'SimpleCache'
     DEBUG = False
 
-    if not SQLALCHEMY_DATABASE_URI:
-        raise RuntimeError("SQLALCHEMY_DATABASE_URI is missing in Render environment variables")
-    
+
 
 
 
