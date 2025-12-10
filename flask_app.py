@@ -3,11 +3,10 @@ from application import create_app
 from application.models import db
 import os
 
-
-
-load_dotenv()   # Load .env only when running locally 
-                # This loads .env automatically
-                # Always call load_dotenv() locally before creating the app. 
+# Load .env only when running locally 
+if os.environ.get("FLASK_ENV") != "production":
+    load_dotenv() # This loads .env automatically
+                 # Always call load_dotenv() locally before creating the app. 
 
 
 
