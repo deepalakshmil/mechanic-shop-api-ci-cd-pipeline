@@ -4,7 +4,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_caching import Cache
 
-ma=Marshmallow()                             
+ma=Marshmallow()  
+# Rate Limiting                           
 limiter= Limiter(key_func=get_remote_address,default_limits=["10000 per day", "50 per minute"]) ## default for all routes in production
     ### Creating and instance of Limiter
     ### Global limit for all routes (can be overridden per route)
