@@ -26,7 +26,9 @@ class ProductionConfig:
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:welcomesql1@localhost/mechanic_shop_db'
     CACHE_TYPE = 'SimpleCache'
     DEBUG = False
-    
+
+    if not SQLALCHEMY_DATABASE_URI:
+        raise RuntimeError("SQLALCHEMY_DATABASE_URI is missing in Render environment variables")
     
 
 
