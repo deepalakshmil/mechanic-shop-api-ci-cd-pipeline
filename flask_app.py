@@ -9,19 +9,19 @@ if os.path.exists(".env"):
                   # Always call load_dotenv() locally before creating the app. 
 
 
-#app= create_app('ProductionConfig')   
+app= create_app('ProductionConfig')   
 # app = create_app("ProductionConfig" if os.environ.get("FLASK_ENV") == "production" else "DevelopmentConfig")
 
-# Use FLASK_ENV to select config
-env = os.environ.get("FLASK_ENV", "development")  # default to development
-config_name = "ProductionConfig" if env == "production" else "DevelopmentConfig"
-app = create_app(config_name)
+# # Use FLASK_ENV to select config
+# env = os.environ.get("FLASK_ENV", "development")  # default to development
+# config_name = "ProductionConfig" if env == "production" else "DevelopmentConfig"
+# app = create_app(config_name)
 
-# Only validate ProductionConfig if in production
-if env == "production":
-    from config import ProductionConfig
-    if not ProductionConfig.SQLALCHEMY_DATABASE_URI:
-        raise RuntimeError("SQLALCHEMY_DATABASE_URI is missing in Render environment variables")
+# # Only validate ProductionConfig if in production
+# if env == "production":
+#     from config import ProductionConfig
+#     if not ProductionConfig.SQLALCHEMY_DATABASE_URI:
+#         raise RuntimeError("SQLALCHEMY_DATABASE_URI is missing in Render environment variables")
 
 
 
