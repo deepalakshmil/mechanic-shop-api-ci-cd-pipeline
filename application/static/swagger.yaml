@@ -3,7 +3,7 @@ info:
   title: "Mechanic Shop API"
   description: "This API is designed for a Mechanic Shop Management System"
   version: "1.0.0"
-host: "mechanic-shop-api-ci-cd-pipeline.onrender.com"
+host: "mechanic-shop-api-ci-cd-pipeline-5.onrender.com" # working on local host
 schemes:
 - "https"
 consumes:
