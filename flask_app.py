@@ -2,11 +2,11 @@ from application import create_app
 from application.models import db
 import os
 
-# Load .env only when running locally 
+# # Load .env only when running locally 
 if os.path.exists(".env"):
     from dotenv import load_dotenv
     load_dotenv() # This loads .env automatically
-                  # Always call load_dotenv() locally before creating the app. 
+#                   # Always call load_dotenv() locally before creating the app. 
 
 
 app= create_app('ProductionConfig')   
