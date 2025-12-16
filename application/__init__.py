@@ -9,6 +9,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 # from flask_cors import CORS 
 
 SWAGGER_URI = '/api/docs'  # URL for exposing Swagger UI (without trailing '/') ## Your API docs will be available at:
+# http://127.0.0.1:5000/api/docs/ => when running locally 
 API_URL = '/static/swagger.yaml'   # Our API URL (can of course be a local resource) ## Inside the UI, it loads documentation from:
 # API_URL = 'https://api-factory-pattern.onrender.com/static/swagger.yaml'
 swaggerui_blueprint = get_swaggerui_blueprint(

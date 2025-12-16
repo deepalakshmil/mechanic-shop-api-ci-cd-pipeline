@@ -30,9 +30,9 @@ with app.app_context():
     # db.drop_all()
 
 # Run locally
-# if __name__ == "__main__":
-#     app.run() # => remove this line because run the app using gunicorn in production
-#     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+#if __name__ == "__main__":
+#    app.run() # => remove this line because run the app using gunicorn in production
+#    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 ## gunicorn command to run the app in production environment and neccsccary to change app:app => flask_app:app
 
